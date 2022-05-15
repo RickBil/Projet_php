@@ -16,7 +16,7 @@ use App\Core\Request;
 
 // echo "Je suis là ! ";
 
-// $db =new DataBase;
+$db =new DataBase;
 // $db->openConnexion();
 
 // $rp =new RP();
