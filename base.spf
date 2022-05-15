@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>allowDataLocalInfile</key>
+			<integer>0</integer>
+			<key>colorIndex</key>
+			<integer>4</integer>
+			<key>database</key>
+			<string>Gestion_Scolaire</string>
+			<key>enableClearTextPlugin</key>
+			<integer>0</integer>
+			<key>host</key>
+			<string>localhost</string>
+			<key>kcid</key>
+			<string>-3448301805603698827</string>
+			<key>name</key>
+			<string>localhost</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8mb4</string>
+			<key>contentFilterV2</key>
+			<dict>
+				<key>children</key>
+				<array/>
+				<key>filterClass</key>
+				<string>groupNode</string>
+				<key>isConjunction</key>
+				<true/>
+			</dict>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
+			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRk
+			YXRhgAGtCwwZGhscHSEoLDA0OFUkbnVsbNMNDg8QFBhXTlMua2V5
+			c1pOUy5vYmplY3RzViRjbGFzc6MREhOAAoADgASjFRYXgAWABoAI
+			gAxUdHlwZVRyb3dzVGtleXNfECZTZWxlY3Rpb25EZXRhaWxUeXBl
+			UHJpbWFyeUtleWVkRGV0YWlsc9MNDg8eHyCgoIAH0iIjJCVaJGNs
+			YXNzbmFtZVgkY2xhc3Nlc18QE05TTXV0YWJsZURpY3Rpb25hcnmj
+			JCYnXE5TRGljdGlvbmFyeVhOU09iamVjdNIODykroSqACYAL0g8t
+			Li9ZTlMuc3RyaW5ngApSaWTSIiMxMl8QD05TTXV0YWJsZVN0cmlu
+			Z6MxMydYTlNTdHJpbmfSIiM1Nl5OU011dGFibGVBcnJheaM1NydX
+			TlNBcnJhedIiIyY5oiYnAAgAEQAaACQAKQAyADcASQBMAFEAUwBh
+			AGcAbgB2AIEAiACMAI4AkACSAJYAmACaAJwAngCjAKgArQDWAN0A
+			3gDfAOEA5gDxAPoBEAEUASEBKgEvATEBMwE1AToBRAFGAUkBTgFg
+			AWQBbQFyAYEBhQGNAZIAAAAAAAACAQAAAAAAAAA6AAAAAAAAAAAA
+			AAAAAAABlQ==
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {1065, 689}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>-- phpMyAdmin SQL Dump
+-- version 5.1.0
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : localhost:8889
+-- Généré le : lun. 09 mai 2022 à 22:46
+-- Version du serveur :  5.7.34
+-- Version de PHP : 8.0.8
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `Gestion_Scolaire`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `classe`
+--
+
+CREATE TABLE `classe` (
+  `id` int(11) NOT NULL,
+  `libelle` varchar(20) NOT NULL,
+  `filiere` varchar(20) NOT NULL,
+  `niveau` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cours`
+--
+
+CREATE TABLE `cours` (
+  `id` int(11) NOT NULL,
+  `date_cours` date NOT NULL,
+  `heure_debut` varchar(10) NOT NULL,
+  `heure_fin` varchar(10) NOT NULL,
+  `classe_id` int(11) NOT NULL,
+  `module_id` int(11) NOT NULL,
+  `professeur_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `inscription`
+--
+
+CREATE TABLE `inscription` (
+  `id` int(11) NOT NULL,
+  `date_inscription` datetime(6) NOT NULL,
+  `classe_id` int(11) NOT NULL,
+  `etudiant_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `module`
+--
+
+CREATE TABLE `module` (
+  `id` int(11) NOT NULL,
+  `libelle` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `professeur_module`
+--
+
+CREATE TABLE `professeur_module` (
+  `module_id` int(11) NOT NULL,
+  `professeur_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `login` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `grade` varchar(25) DEFAULT NULL,
+  `ville` varchar(100) DEFAULT NULL,
+  `quartier` varchar(100) DEFAULT NULL,
+  `role` varchar(20) NOT NULL,
+  `nom` varchar(20) NOT NULL,
+  `prenom` varchar(35) NOT NULL,
+  `mail` varchar(100) NOT NULL,
+  `photo` blob NOT NULL,
+  `matricule` varchar(12) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `classe`
+--
+ALTER TABLE `classe`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `libelle` (`libelle`);
+
+--
+-- Index pour la table `cours`
+--
+ALTER TABLE `cours`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `classe_id` (`classe_id`),
+  ADD KEY `professeur_id` (`professeur_id`),
+  ADD KEY `module_id` (`module_id`);
+
+--
+-- Index pour la table `inscription`
+--
+ALTER TABLE `inscription`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `classe_id` (`classe_id`),
+  ADD KEY `inscription_ibfk_1` (`etudiant_id`);
+
+--
+-- Index pour la table `module`
+--
+ALTER TABLE `module`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `libelle` (`libelle`);
+
+--
+-- Index pour la table `professeur_module`
+--
+ALTER TABLE `professeur_module`
+  ADD KEY `module_id` (`module_id`),
+  ADD KEY `professeur_id` (`professeur_id`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `login` (`login`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `classe`
+--
+ALTER TABLE `classe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `cours`
+--
+ALTER TABLE `cours`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `inscription`
+--
+ALTER TABLE `inscription`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `module`
+--
+ALTER TABLE `module`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `cours`
+--
+ALTER TABLE `cours`
+  ADD CONSTRAINT `cours_ibfk_1` FOREIGN KEY (`classe_id`) REFERENCES `classe` (`id`),
+  ADD CONSTRAINT `cours_ibfk_2` FOREIGN KEY (`module_id`) REFERENCES `module` (`id`),
+  ADD CONSTRAINT `cours_ibfk_3` FOREIGN KEY (`professeur_id`) REFERENCES `user` (`id`);
+
+--
+-- Contraintes pour la table `inscription`
+--
+ALTER TABLE `inscription`
+  ADD CONSTRAINT `inscription_ibfk_1` FOREIGN KEY (`etudiant_id`) REFERENCES `user` (`id`);
+
+--
+-- Contraintes pour la table `professeur_module`
+--
+ALTER TABLE `professeur_module`
+  ADD CONSTRAINT `professeur_module_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `module` (`id`),
+  ADD CONSTRAINT `professeur_module_ibfk_2` FOREIGN KEY (`professeur_id`) REFERENCES `user` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+</string>
+			<key>table</key>
+			<string>img</string>
+			<key>view</key>
+			<string>SP_VIEW_STRUCTURE</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>214</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.7.34</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
