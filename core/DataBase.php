@@ -5,15 +5,20 @@ use App\Exceptions\ConnexionException;
 
 
 class DataBase{
-    private \PDO|null $pdo=null;//Pas de connexion
+    public \PDO|null $pdo=null;//Pas de connexion
     //Mode Deconnecte
     public function openConnexion(){
+        $Serveur="127.0.0.1";
+        $use="root";
+        $pass="";
+        $base="Gestion_Scolaire";
         //host : adresse du server BD
         try {
             //Essaie de te connecter
-            $this->pdo=new \PDO("mysql:dbname=Gestion_Scolaire;host=localhost:8889","root","");
+            $this->pdo=new \PDO("mysql:host=$Serveur;dbname=$base",$use,$pass);
+            die(" Connexion");
         } catch (\Exception $ex) {
-            die("Erreur Connexion -Veuillez contacter votre Admin");
+            die("Erreur Connexion -Veuillez contacter votre Admin!");
               //throw new BdConnexionException;
         }
     }

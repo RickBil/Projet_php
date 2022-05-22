@@ -1,6 +1,7 @@
 <?php
 // Front Controllers 
-use App\Core\DataBase;
+
+use App\Core\Database;
 use App\Exceptions\BdConnexionException;
 
 require_once('../vendor/autoload.php');
@@ -17,14 +18,14 @@ use App\Core\Request;
 // echo "Je suis là ! ";
 
 $db =new DataBase;
-// $db->openConnexion();
+$db->openConnexion();
 
-// $rp =new RP();
-// $rp->setLogin("rp3");
-// $rp->setPassword("rp");
-// $rp->insert();
-// echo "<pre>";
-// RP::selectAll();
-// var_dump(RP::selectById(1));
-// echo "</pre>";
+$rp =new RP();
+$rp->setLogin("rp3");
+$rp->setPassword("rp");
+$rp->insert();
+echo "<pre>";
+RP::selectAll();
+var_dump(RP::selectById(1));
+echo "</pre>";
 
