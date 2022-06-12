@@ -7,11 +7,6 @@ class User extends Model{
     protected string $login;
     protected string $password;
     protected string $role;
-    protected string $nom;
-    protected string $prenom;
-    protected string $mail;
-    protected string $photo;
-    protected string $tel;
     // Attributs Static
     public function __construct()
     {
@@ -20,11 +15,14 @@ class User extends Model{
 
     public function insert(){
         //die(parent::$table);
-        $sql="INSERT INTO  ".parent::$table."  ('login','password','role','nom','prenom',)
-            VALUES ( ?, ?, ?,?,?);";
+        $sql="INSERT INTO  ".parent::$table." ('login','password') VALUES ( ?, ?);";
         return parent::database()->executeUpdate($sql,[
                 $this->login,$this->password,self::$role],$this->nom,$this->prenom);
     }
+    public function update(){
+        $sql="update user set login={$this->login},password={$this->password} where id={$this->id}";
+    }
+    
 
     /**
      * Get the value of id
@@ -106,104 +104,4 @@ class User extends Model{
         return $this;
     }
 
-    /**
-     * Get the value of mail
-     */ 
-    public function getMail()
-    {
-        return $this->mail;
-    }
-
-    /**
-     * Set the value of mail
-     *
-     * @return  self
-     */ 
-    public function setMail($mail)
-    {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of photo
-     */ 
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    /**
-     * Set the value of photo
-     *
-     * @return  self
-     */ 
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of tel
-     */ 
-    public function getTel()
-    {
-        return $this->tel;
-    }
-
-    /**
-     * Set the value of tel
-     *
-     * @return  self
-     */ 
-    public function setTel($tel)
-    {
-        $this->tel = $tel;
-
-        return $this;
-    }
-
-
-    /**
-     * Get the value of nom
-     */ 
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * Set the value of nom
-     *
-     * @return  self
-     */ 
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of prenom
-     */ 
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    /**
-     * Set the value of prenom
-     *
-     * @return  self
-     */ 
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
 }

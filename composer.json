@@ -1,21 +1,18 @@
 {
     "name": "rickchristian/gestion_scolaire",
+    "type": "y",
     "autoload": {
         "psr-4": {
+            "Rickchristian\\GestionScolaire\\": "src/",
             "App\\Models\\": "models/",
             "App\\Core\\": "core/",
             "App\\Controllers\\": "controllers/",
-            "App\\Exception\\": "exception/"
+            "App\\Exceptions\\": "exceptions/"
         }
     },
     "authors": [{
         "name": "Rick Christian",
         "email": "rickchristian241@gmail.com"
     }],
-    "require": {
-        "vendor/package": "1.3.2",
-        "vendor/package2": "1.*",
-        "vendor/package3": "^2.0.3"
-    }
-
+    "require": {}
 }

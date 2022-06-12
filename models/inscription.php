@@ -9,10 +9,12 @@ class Inscription {
     
     // many to one avec Classe
     public function classe():Classe{
+        $sql="select c.* from inscription i,classe c where c.id=i.classe_id and i.id={$this->id}";
         return new Classe(); 
     }
     // many to one avec Etudiant
     public function etudiant():Etudiant{
+        $sql="select e.* from inscription i,etudiant e where e.id=i.etudiant_id and i.id={$this->id}";
         return new Etudiant(); 
     }
     public function __construct(){

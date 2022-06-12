@@ -16,15 +16,13 @@ class Classe{
 
      // one to many Cours
     public function cours(): array{
-        $sql="select c.* from cours c, 
-            classe cl where c.classe_id=cl.id and cl.id={$this->id} 
-            ";
+        $sql="select c.* from cours c where c.classe_id={$this->id}";
         return [];
     }
     
     // one to many Inscription
     public function inscriptions(): array{
-            
+        $sql="select i.* from inscription i where i.classe_id={$this->id}";
         return [];  
     }
 

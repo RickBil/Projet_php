@@ -3,11 +3,12 @@ namespace App\Models;
 class Etudiant extends User{
 
     // Attributs 
+    private string $nomComplet;
     private string $matricule;
 
     // one to many avec Inscription
     public function inscriptions():array{
-
+        $sql="select e.* from inscription i where i.etudiant_id={$this->id}";
         return []; 
     }
     
@@ -32,6 +33,26 @@ class Etudiant extends User{
     public function setMatricule($matricule)
     {
         $this->matricule = $matricule;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nomComplet
+     */ 
+    public function getNomComplet()
+    {
+        return $this->nomComplet;
+    }
+
+    /**
+     * Set the value of nomComplet
+     *
+     * @return  self
+     */ 
+    public function setNomComplet($nomComplet)
+    {
+        $this->nomComplet = $nomComplet;
 
         return $this;
     }

@@ -16,7 +16,7 @@ class DataBase{
         try {
             //Essaie de te connecter
             $this->pdo=new \PDO("mysql:host=$Serveur;dbname=$base",$use,$pass);
-            die(" Connexion");
+                // die("Connexion ");
         } catch (\Exception $ex) {
             die("Erreur Connexion -Veuillez contacter votre Admin!");
               //throw new BdConnexionException;
