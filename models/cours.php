@@ -95,7 +95,8 @@ class Cours{
      */ 
     public function getDateCours()
     {
-        return $this->dateCours;
+        $date=new  \DateTime($this->dateCours);
+        return $date->format("d/m/Y");
     }
 
     /**

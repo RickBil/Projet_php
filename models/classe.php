@@ -15,10 +15,12 @@ class Classe{
     }
 
      // one to many Cours
-    public function cours(): array{
-        $sql="select c.* from cours c where c.classe_id={$this->id}";
-        return [];
-    }
+    public function cours():array{
+        $sql="select c.* from cours c, 
+              classe cl where c.classe_id=cl.id and cl.id=? 
+              ";
+            return  parent::selectWhere($sql,[$this->id],false,Cours::class);
+       }
     
     // one to many Inscription
     public function inscriptions(): array{
@@ -105,4 +107,23 @@ class Classe{
 
         return $this;
     }
+
+    public function insert(){
+        $sql="INSERT INTO  ".parent::table()."  (`libelle`, `filiere`, `niveau`) VALUES (?,?,?)";
+        return parent::database()->executeUpdate($sql,[
+                 $this->libelle,
+                 $this->filiere,
+                 $this->niveau,
+        ]);
+   }
+
+   public function update(){
+       $sql="UPDATE ".parent::table()." SET `libelle` = ?, `filiere` = ?, `niveau` = ? WHERE `classe`.`id` = ? ";
+       return parent::database()->executeUpdate($sql,[
+           $this->libelle,
+           $this->filiere,
+           $this->niveau,
+           $this->id
+      ]);
+   }
 }

@@ -1,18 +1,107 @@
-<?php
+<?php 
+namespace App\Controllers;
 
-namespace App\Controller;
-class ClasseController implements Icontroller{
-    public function ajouter(){
-        
-    }
+use App\Core\Request;
+use App\Models\Classe;
+use App\Core\Controller;
+use App\Core\IController;
+use Rakit\Validation\Validator;
+
+class ClasseController extends Controller implements IController{
+
+    private array $niveaux=["Licence 1","Licence 2","Licence 3","Master 1","Master 2"];
+    private array $filieres=["MAE","GLRS","CDSD","IAGE","TTL","ETSE","IDC","MOSEF"];
     public function lister(){
 
+         $classes=Classe::selectAll(true); 
+          $this->render("classe/liste",[
+            'classes'=> $classes
+         ]);
     }
+
+    public function ajouter(){
+        if( $this->request->isGet()){  
+            $this->render("classe/add",[
+                "niveaux"=>$this->niveaux,
+                "filieres"=>$this->filieres
+            ]);
+      }
+
+      if($this->request->isPost()){
+        $validator = new Validator;
+        $validation = $validator->make($this->request->request(),[
+            'niveau' => 'required',
+            'filiere'=> 'required',
+            'libelle'=> 'required',
+        ],
+         [
+             'required' => ':attribute est obligatoire',
+         ]);
+        $validation->validate();
+         if ($validation->fails()) {
+           $errors = $validation->errors();
+            $this->render("classe/add",[
+                 'errors'=>$errors->firstOfAll(),
+                 "niveaux"=>$this->niveaux,
+                 "filieres"=>$this->filieres
+            ]);
+         }else{
+             $data=$this->request->request();
+             $classe =new Classe();
+             $classe->setFiliere($data['filiere']);
+             $classe->setNiveau($data['niveau']);
+             $classe->setLibelle($data['libelle']);
+             $classe->insert();
+             $this->redirectToRoute("/classe");
+         }
+      }
+    }
+
     public function supprimer(){
-
+        
     }
+
     public function modifier(){
+        if( $this->request->isGet()){  
+            $classeId= intval($this->request->query()[0]) ;
+            $classe=Classe::selectById( $classeId);
+            //dd(  $classe);
+            $this->render("classe/edit",[
+                "niveaux"=>$this->niveaux,
+                "filieres"=>$this->filieres,
+                "classe"=>$classe
+            ]);
+      }
 
+      if($this->request->isPost()){
+        $validator = new Validator;
+        $validation = $validator->make($this->request->request(),[
+            'niveau' => 'required',
+            'filiere'=> 'required',
+            'libelle'=> 'required',
+        ],
+         [
+             'required' => ':attribute est obligatoire',
+         ]);
+        $validation->validate();
+         if ($validation->fails()) {
+           $errors = $validation->errors();
+            $this->render("classe/add",[
+                 'errors'=>$errors->firstOfAll(),
+                 "niveaux"=>$this->niveaux,
+                 "filieres"=>$this->filieres
+            ]);
+         }else{
+             $data=$this->request->request();
+             $classe =Classe::selectById($data['classe_id']);
+             $classe->setFiliere($data['filiere']);
+             $classe->setNiveau($data['niveau']);
+             $classe->setLibelle($data['libelle']);
+             $classe->update();
+             $this->redirectToRoute("/classe");
+         }
+      }
     }
-}
 
+   
+}

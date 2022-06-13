@@ -97,11 +97,17 @@ class User extends Model{
      *
      * @return  self
      */ 
-    public function setRole($role)
+    
+    public static function setRole($role)
     {
-        $this->role = $role;
-
-        return $this;
+        self::$role = $role;  
     }
+
+    public  function selectUserByLoginAndPassword(){
+        $sql="select * from user where login=? and password=?";
+        return parent::database()->executeSelect($sql,
+                                   [$this->login,$this->password],
+                                    true) ;
+  }
 
 }

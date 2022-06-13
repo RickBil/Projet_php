@@ -9,4 +9,9 @@ class Rp extends User{
         $this->role="ROLE_RP";
     }
 
+    public static  function selectAll(){
+        $sql="select *  from  ".parent::table()." where roles like ? ";
+       return parent::database()->executeSelect($sql,[parent::$role]);
+    }
+
 }

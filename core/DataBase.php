@@ -7,6 +7,7 @@ use App\Exceptions\ConnexionException;
 class DataBase{
     public \PDO|null $pdo=null;//Pas de connexion
     //Mode Deconnecte
+    private string $className;
     public function openConnexion(){
         $Serveur="127.0.0.1";
         $use="root";
@@ -58,5 +59,17 @@ class DataBase{
         $result=$stm->rowCount();
         $this->closeConnexion();
         return  $result;
+    }
+
+    /**
+     * Set the value of className
+     *
+     * @return  self
+     */ 
+    public function setClassName($className)
+    {
+        $this->className = $className;
+
+        return $this;
     }
 }
